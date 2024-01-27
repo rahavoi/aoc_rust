@@ -19,13 +19,11 @@ pub fn solve(input : &String) {
         let mut distance = 0;
 
         let mut it = path.iter().peekable();
-
         let mut copy = it.clone();
-
-
         let mut avoid_longest_commute = true;
 
-        //Trick here is to completely avoid paths containing the longest commute.
+        //Trick here is to completely avoid paths containing the longest commute between a pair of cities
+        //determined earlier, as such paths are guaranteed to be suboptimal.
         //This way we reduce the number of permutations we need to check.
         //Assumption: checking if a path contains a pair of cities with longest commute
         //is cheaper than calculating the total travelling distance of the path.
