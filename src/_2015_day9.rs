@@ -9,16 +9,17 @@ pub fn solve(input : &String) {
 
     let mut cities : Vec<&String> = distances.keys().collect();
     let a_city = cities.remove(0);
+    let total_cities = cities.len();
 
-    for path in cities.into_iter().permutations(distances.len()) {
+    for path in cities.into_iter().permutations(total_cities) {
         let mut total_distance = 0;
         let mut max_distance = i32::MIN;
 
         let mut it = path.iter().peekable();
 
-        let first = it.peek().unwrap() as &String;
+        let first_city = it.peek().unwrap() as &String;
 
-        total_distance = total_distance + distances.get(a_city).unwrap().get(first).unwrap();
+        total_distance = total_distance + distances.get(a_city).unwrap().get(first_city).unwrap();
 
         while let Some(city) = it.next() {
             if it.peek().is_some() {

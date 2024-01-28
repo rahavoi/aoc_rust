@@ -11,9 +11,6 @@ fn main() {
     //_2015_day3::solve(&input);
 
 
-
-
-
     _2015_day9::solve(&input);
 
     println!("Elapsed: {:.2?}", now.elapsed());
