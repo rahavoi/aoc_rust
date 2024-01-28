@@ -30,7 +30,6 @@ pub fn solve(input : &String) {
                     .get(next).unwrap();
 
                 max_distance = cmp::max(max_distance, cur_distance.clone());
-
                 total_distance = total_distance + cur_distance;
             } else {
                 let cur_distance = distances.get(*city).unwrap().get(a_city).unwrap();
