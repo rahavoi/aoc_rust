@@ -11,14 +11,14 @@ pub fn solve(input : &String) {
     let a_city = cities.remove(0);
 
     for path in cities.into_iter().permutations(distances.len()) {
-        //println!("{:?}", path);
-        let mut distance = 0;
+        let mut total_distance = 0;
         let mut max_distance = i32::MIN;
 
         let mut it = path.iter().peekable();
 
         let first = it.peek().unwrap() as &String;
-        distance = distance + distances.get(a_city).unwrap().get(first).unwrap();
+
+        total_distance = total_distance + distances.get(a_city).unwrap().get(first).unwrap();
 
         while let Some(city) = it.next() {
             if it.peek().is_some() {
@@ -30,17 +30,16 @@ pub fn solve(input : &String) {
 
                 max_distance = cmp::max(max_distance, cur_distance.clone());
 
-                distance = distance + cur_distance;
+                total_distance = total_distance + cur_distance;
             } else {
                 let cur_distance = distances.get(*city).unwrap().get(a_city).unwrap();
                 max_distance = cmp::max(max_distance, cur_distance.clone());
-                distance = distance + cur_distance;
+                total_distance = total_distance + cur_distance;
             }
         }
 
-        distance = distance - max_distance;
-
-        min_distance = cmp::min(distance, min_distance);
+        total_distance = total_distance - max_distance;
+        min_distance = cmp::min(total_distance, min_distance);
     }
 
     println!("{}", min_distance);
