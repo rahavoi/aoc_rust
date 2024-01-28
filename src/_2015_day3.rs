@@ -21,7 +21,6 @@ fn part1(input: &String) {
             _ => panic!("Wrong instruction: {}", c)
         };
 
-
         let key = format!("{},{}", &x, &y);
 
         *pos_count.entry(key.to_string()).or_insert(0) += 1;
@@ -45,8 +44,6 @@ fn part2(input: &String) {
         let mut x = if santas_turn { santa_x } else { robot_x };
         let mut y = if santas_turn { santa_y } else { robot_y };
 
-
-
         match c {
             '>' => x = x + 1,
             '<' => x = x - 1,
@@ -54,7 +51,6 @@ fn part2(input: &String) {
             'v' => y = y - 1,
             _ => panic!("Wrong instruction: {}", c)
         };
-
 
         let key = format!("{},{}", &x, &y);
 
