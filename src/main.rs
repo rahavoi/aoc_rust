@@ -1,7 +1,7 @@
 use std::fs;
 use std::time::Instant;
 
-mod _2015_day5;
+mod _2015_day6;
 
 fn main() {
     let input = parse_input();
@@ -10,7 +10,8 @@ fn main() {
     //_2015_day2::solve(&input);
     //_2015_day3::solve(&input);
     //_2015_day4::solve("ckczppom");
-    _2015_day5::solve(&input);
+    //_2015_day5::solve(&input);
+    _2015_day6::solve(&input);
 
     //_2015_day9::solve(&input);
 
@@ -18,6 +19,6 @@ fn main() {
 }
 
 fn parse_input() -> String{
-    let path = std::path::Path::new("/Users/irahavoi/IdeaProjects/aoc_rust/resources/2015/Day5.txt");
+    let path = std::path::Path::new("/Users/irahavoi/IdeaProjects/aoc_rust/resources/2015/Day6.txt");
     fs::read_to_string(path).expect("No Such File")
 }
