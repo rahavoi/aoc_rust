@@ -24,11 +24,11 @@ pub fn solve(input: &str){
             };
         });
 
-        println!("Still need to process {} wires.. ", unprocessed.len());
+        //println!("Still need to process {} wires.. ", unprocessed.len());
         instructions = unprocessed;
     }
 
-    println!("{:?}", circuit);
+    //println!("{:?}", circuit);
     println!("A: {}", circuit.get("a").unwrap())
 }
 

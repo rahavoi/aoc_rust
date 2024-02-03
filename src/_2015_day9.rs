@@ -1,6 +1,5 @@
 use std::cmp;
 use std::collections::HashMap;
-use std::time::Instant;
 
 use itertools::Itertools;
 
@@ -10,9 +9,9 @@ pub fn solve(input : &String) {
 
     let mut cities : Vec<&String> = distances.keys().collect();
     let a_city = cities.remove(0);
-    let total_cities = cities.len();
+    let remaining_cities = cities.len();
 
-    for path in cities.into_iter().permutations(total_cities) {
+    for path in cities.into_iter().permutations(remaining_cities) {
         let mut total_distance = 0;
         let mut max_distance = i32::MIN;
 
