@@ -4,7 +4,6 @@ pub fn solve(input : &str){
     let mut data = input.to_string();
 
     for i in 0..40 {
-        println!("{i}");
         let mut copy = data.as_bytes();
         let mut cur_idx = 1;
         let mut out = "".to_owned();
