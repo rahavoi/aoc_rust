@@ -1,11 +1,22 @@
 use std::cmp;
 use std::collections::vec_deque::VecDeque;
 
+struct Rule {
+    source_idx: i64,
+    destination_idx: i64,
+    length: i64
+}
+
+struct Range {
+    start : i64,
+    length : i64,
+}
+
 pub fn solve(input : &str){
     let mut lines = input.split("\n");
 
     let seeds_input = lines.next().unwrap().replace("seeds: ", "");
-    let seeds_part1 : Vec<i64> = seeds_input.split(" ").map(|s| s.parse::<i64>().unwrap()).collect();
+    let seeds_part1 : Vec<i64> = seeds_input.split(" ").map(|s| s.parse::<i64>().expect()).collect();
     let ranges_part2 : VecDeque<Range> = parse_ranges(&seeds_input);
 
     lines.next();
@@ -114,15 +125,4 @@ fn parse_ranges(input : &str) -> VecDeque<Range> {
     }
 
     ranges
-}
-
-struct Rule {
-    source_idx: i64,
-    destination_idx: i64,
-    length: i64
-}
-
-struct Range {
-    start : i64,
-    length : i64,
 }
