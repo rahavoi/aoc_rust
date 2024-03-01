@@ -16,7 +16,7 @@ pub fn solve(input : &str){
     let mut lines = input.split("\n");
 
     let seeds_input = lines.next().unwrap().replace("seeds: ", "");
-    let seeds_part1 : Vec<i64> = seeds_input.split(" ").map(|s| s.parse::<i64>().expect()).collect();
+    let seeds_part1 : Vec<i64> = seeds_input.split(" ").map(|s| s.parse::<i64>().unwrap()).collect();
     let ranges_part2 : VecDeque<Range> = parse_ranges(&seeds_input);
 
     lines.next();
@@ -43,7 +43,7 @@ pub fn solve(input : &str){
     almanac.push(cur);
 
     println!("Part1: {}", part1(&seeds_part1, &mut almanac));
-    println!("Part1: {}", part2(ranges_part2, &mut almanac));
+    println!("Part2: {}", part2(ranges_part2, &mut almanac));
 }
 
 fn part1(seeds: &Vec<i64>, almanac: &Vec<Vec<Rule>>) -> i64 {
@@ -77,7 +77,7 @@ fn part2(mut ranges: VecDeque<Range>, almanac: &Vec<Vec<Rule>>) -> i64{
             //Found perfect continous range, no need to check all elements
             min_location = cmp::min(min_location, start_seed_location);
         } else {
-            if length.to_owned() > 2 {
+            if length > 2 {
                 ranges.push_back(Range {
                     start : start.to_owned(),
                     length : length.to_owned() / 2
@@ -111,7 +111,7 @@ fn get_destination_from_source(source : &i64, rules : &Vec<Rule>) -> i64 {
         }
     }
 
-    return source.clone()   ;
+    return source.clone();
 }
 
 fn parse_ranges(input : &str) -> VecDeque<Range> {
